@@ -106,6 +106,16 @@ object Lab2 extends App {
     x => f(g(x))
     
   println(s"Task_5[generic compose]: ${compose((x: Int) => x - 1, (x: Int) => x * 2)(5)}")  
+
+  // ------------------------------ TASK_6 ------------------------------
+  def composeThree[A, B, C, D](f: C => D, g: B => C, h: A => B): A => D =
+    x => f(g(h(x)))
+    
+  println(s"Task_6[composeThree]: ${composeThree((x: Int) => x - 1, (x: Int) => x - 2, (x: Int) => x - 3)(10)}")  
   
+  def composeThree2[A, B, C, D](f: C => D, g: B => C, h: A => B): A => D = 
+    x => compose(f, compose(g, h))(x)
+  
+  println(s"Task_6[composeThree2]: ${composeThree2((x: Int) => x - 1, (x: Int) => x - 2, (x: Int) => x - 3)(10)}")
   
 }
