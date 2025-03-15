@@ -117,5 +117,31 @@ object Lab2 extends App {
     x => compose(f, compose(g, h))(x)
   
   println(s"Task_6[composeThree2]: ${composeThree2((x: Int) => x - 1, (x: Int) => x - 2, (x: Int) => x - 3)(10)}")
+
+  // ------------------------------ TASK_7 ------------------------------ 
+  // recursive function without tail recursion
+  def power(base: Double, exp: Int): Double = exp match
+    case 0 => 1
+    case _ if exp > 0 => base * power(base, exp - 1)
+    
+  println(s"Task_7[power_without_tail_recursion]: ${power(4.0, 2)}")
+  // println(s"Task_7[power_without_tail_recursion]: ${power(4.0, -2)}")
+  println(s"Task_7[power_without_tail_recursion]: ${power(4.0, 0)}")
+  println(s"Task_7[power_without_tail_recursion]: ${power(4.0, 1)}")
+
+  // recursive function with tail recursion
+  def powerTail(base: Double, exp: Int): Double =
+    @annotation.tailrec
+    def _pow(base: Double, exp: Int, acc: Double): Double = exp match
+      case 0 => acc
+      case _ if exp > 0 => _pow(base, exp - 1, base * acc)
+      
+    _pow(base, exp, 1)
+
+  println(s"Task_7[power_with_tail_recursion]: ${powerTail(4.0, 2)}")
+  // println(s"Task_7[power_with_tail_recursion]: ${powerTail(4.0, -2)}")
+  println(s"Task_7[power_with_tail_recursion]: ${powerTail(4.0, 0)}")
+  println(s"Task_7[power_with_tail_recursion]: ${powerTail(4.0, 1)}")
+  
   
 }
