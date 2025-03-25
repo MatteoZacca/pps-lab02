@@ -3,12 +3,13 @@ package u02
 object CaseMatch extends App:
 
   // matching against patterns
-  val v = 5
+  val v = 0
+  // val v: Int = 5;
   val res = v match
     case n if n > 0 => "pos"
     case 0 => "zero"
     case _ => "neg" // default case, makes it a total function
-  println(res) // "pos"
+  println(res) // "zero"
 
   // case-based function (a partial function in this case)
   val f: Int => String = _ match
