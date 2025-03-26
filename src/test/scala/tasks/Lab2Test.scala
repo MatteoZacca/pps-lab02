@@ -2,10 +2,10 @@ package tasks
 
 import org.junit.*
 import org.junit.Assert.*
-import Lab2.*
-import Lab2.Expr
 
 class Lab2Test:
+  import Lab2.*
+  import Lab2.Expr
 
   @Test def task_3a(): Unit =
     // val assigned to function literal
