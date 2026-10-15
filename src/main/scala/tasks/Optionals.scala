@@ -1,11 +1,11 @@
-package task5
+package tasks
 
 // overall module
 object Optionals:
 
   // type "public" definition, exposing structure
   enum OptionalInt:
-    case Just(value: Int)
+    case Maybe(value: Int)
     case Empty()
 
   // operations (/algorithms)
@@ -16,14 +16,14 @@ object Optionals:
       case _       => false
 
     def orElse(opt: OptionalInt, orElse: Int): Int = opt match
-      case Just(a) => a
+      case Maybe(a) => a
       case _       => orElse
 
 @main def tryOptionals(): Unit =
-  import Optionals.* // to work with Optionals (to see OptionalInt type)
+  import Optionals.*
   import OptionalInt.* // to directly access algorithms
 
-  val s1: OptionalInt = Just(1)
+  val s1: OptionalInt = Maybe(1)
   val s2: OptionalInt = Empty()
 
   println(s1) // Some(1)
